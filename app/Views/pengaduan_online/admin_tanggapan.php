@@ -1,0 +1,96 @@
+<?= $this->include('partials/main') ?>
+
+<head>
+
+    <?= $title ?>
+
+    <!-- Plugins css -->
+    <link href="/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+    <?= $this->include('partials/head-css') ?>
+
+</head>
+
+<?= $this->include('partials/body') ?>
+
+<div class="container-fluid">
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <?= $this->include('partials/menu') ?>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h2 class="card-title"><?= $title ?></h2>
+                                <form action="/admin/inputTanggapan" class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+
+                                    <div class="mb-3">
+                                        <label for="isi">Tanggapan</label>
+                                        <textarea name="isi" class="form-control <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" rows="3" placeholder="Masukkan Isi"><?= old('isi'); ?></textarea>
+                                        <div class="invalid-feedback"><?= $validation->getError('isi'); ?></div>
+                                    </div>
+
+                                    <label for="lampiran">Lampiran</label>
+                                    <div class="dropzone mb-3">
+                                        <div class="fallback">
+                                            <input name="lampiran" type="file">
+                                        </div>
+                                        <div class="dz-message needsclick">
+                                            <div class="mb-3">
+                                                <i class="display-4 text-muted mdi mdi-upload-network-outline"></i>
+                                            </div>
+                                            <h4>Drop files here or click to upload.</h4>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="idPengaduan" value="<?= $idPengaduan; ?>">
+
+                                    <div class="mb-3 text-end">
+                                        <button type="reset" class="btn btn-danger me-3">Reset</button>
+                                        <button type="submit" class="btn btn-primary" name="input_PO">Submit</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- End Page-content -->
+
+            <?= $this->include('partials/footer') ?>
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+</div>
+<!-- end container-fluid -->
+
+<?= $this->include('partials/right-sidebar') ?>
+
+<!-- JAVASCRIPT -->
+<?= $this->include('partials/vendor-scripts') ?>
+
+<!-- Plugins js -->
+<script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- App js -->
+<script src="/assets/js/app.js"></script>
+
+</body>
+
+</html>
