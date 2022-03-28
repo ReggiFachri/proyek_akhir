@@ -10,7 +10,7 @@
                 <li>
                     <a href="/Pengaduan_online" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
-                        <span>Beranda</span>
+                        <span>Riwayat Pengaduan</span>
                     </a>
                 </li>
                 <li>

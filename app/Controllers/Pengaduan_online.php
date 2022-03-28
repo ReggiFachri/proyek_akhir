@@ -70,7 +70,8 @@ class Pengaduan_online extends BaseController
         $data = [
             'title' => 'Edit Pengaduan Online',
             'validation' => \Config\Services::validation(),
-            'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id)
+            'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id),
+            'kategori' => $this->KategoriModel->getKategori()
         ];
 
         return view('pengaduan_online/edit_pengaduan_online', $data);
@@ -180,14 +181,15 @@ class Pengaduan_online extends BaseController
             'idPengaduan' => $id,
             'Judul' => $this->request->getVar('judul'),
             'Isi' => $this->request->getVar('isi'),
-            'Kategori' => $this->request->getVar('kategori'),
+            'idKategori' => $this->request->getVar('kategori'),
             'Lampiran' => $namalampiran,
-            'Status' => 'Belum diproses'
+            'Status' => 'Belum diproses',
+            'idCustomer' => $this->request->getVar('idCustomer')
         ]);
 
         session()->setFlashdata('pesan', 'berhasil mengubah pengaduan.');
 
-        return redirect()->to('/Pengaduan_online/beranda');
+        return redirect()->to('/Pengaduan_online');
     }
 
     public function cancel($id)
@@ -199,7 +201,7 @@ class Pengaduan_online extends BaseController
 
         session()->setFlashdata('pesan', 'berhasil membatalkan pengaduan.');
 
-        return redirect()->to('/Pengaduan_online/beranda');
+        return redirect()->to('/Pengaduan_online');
     }
 
     public function delete($id)
@@ -215,6 +217,6 @@ class Pengaduan_online extends BaseController
 
         session()->setFlashdata('pesan', 'berhasil menghapus pengaduan.');
 
-        return redirect()->to('/Pengaduan_online/beranda');
+        return redirect()->to('/Pengaduan_online');
     }
 }

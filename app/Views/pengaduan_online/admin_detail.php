@@ -35,16 +35,23 @@
                                     <div class="col-6">
                                         <address>
                                             <strong>Identitas pengaju</strong><br>
-                                            John Smith<br>
-                                            1234 Main<br>
-                                            Apt. 4B<br>
-                                            Springfield, ST 54321
+                                            <?= $customer['Nama']; ?><br>
+                                            <?= $customer['NIK']; ?><br>
+                                            <?= $customer['Email']; ?><br>
                                         </address>
                                     </div>
                                     <div class="col-6">
+                                        <?php //getNamaKategori
+                                        $k = '';
+                                        foreach ($kategori as $a) {
+                                            if ($pengaduan['idKategori'] == $a['idKategori']) {
+                                                $k = $a['namaKategori'];
+                                            }
+                                        }
+                                        ?>
                                         <address>
                                             <strong>Kode Tiket P-<?= $pengaduan['idPengaduan']; ?></strong><br>
-                                            <?= $pengaduan['Kategori']; ?><br>
+                                            <?= $k; ?><br>
                                             <?= $pengaduan['Judul']; ?><br>
                                             <?= $pengaduan['Isi']; ?><br>
                                             Lampiran : <a href="/lampiran/<?= $pengaduan['Lampiran']; ?>">Lampiran</a><br>

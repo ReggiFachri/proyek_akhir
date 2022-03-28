@@ -4,16 +4,22 @@ namespace App\Controllers;
 
 use App\Models\Pengaduan_onlineModel;
 use App\Models\Tanggapan_POModel;
+use App\Models\CustModel;
+use App\Models\KategoriModel;
 
 class Admin_PO extends BaseController
 {
     protected $pengaduan_onlineModel;
     protected $Tanggapan_POModel;
+    protected $CustModel;
+    protected $KategoriModel;
 
     public function __construct()
     {
         $this->Pengaduan_onlineModel = new Pengaduan_onlineModel();
         $this->Tanggapan_POModel = new Tanggapan_POModel();
+        $this->CustModel = new CustModel();
+        $this->KategoriModel = new KategoriModel();
     }
 
     public function index()
@@ -21,6 +27,7 @@ class Admin_PO extends BaseController
         $data = [
             'title' => 'Daftar Pengaduan Online',
             'pengaduan' => $this->Pengaduan_onlineModel->listPengaduanAdmin(),
+            'kategori' => $this->KategoriModel->getKategori(),
             'proses' => 0,
             'selesai' => 0
         ];
@@ -33,7 +40,9 @@ class Admin_PO extends BaseController
         $data = [
             'title' => 'Detail Pengaduan Online',
             'validation' => \Config\Services::validation(),
-            'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id)
+            'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id),
+            'customer' => $this->CustModel->getCustomer(1),
+            'kategori' => $this->KategoriModel->getKategori()
         ];
 
         return view('pengaduan_online/admin_detail', $data);

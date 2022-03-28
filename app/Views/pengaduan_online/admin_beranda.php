@@ -54,9 +54,17 @@
 
                                     <tbody>
                                         <?php foreach ($pengaduan->getResult() as $a) : ?>
+                                            <?php //getNamaKategori
+                                            $k = '';
+                                            foreach ($kategori as $b) {
+                                                if ($a->idKategori == $b['idKategori']) {
+                                                    $k = $b['namaKategori'];
+                                                }
+                                            }
+                                            ?>
                                             <tr>
                                                 <td><?= $a->Judul; ?></td>
-                                                <td><?= $a->Kategori; ?></td>
+                                                <td><?= $k; ?></td>
                                                 <td><?= $a->created_at; ?></td>
                                                 <td><?= $a->Status; ?></td>
                                                 <td>

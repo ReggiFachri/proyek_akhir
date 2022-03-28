@@ -35,7 +35,17 @@
 
                                 <h4 class="card-title"><?= $title; ?></h4>
 
-                                <form action="/Pengaduan_online/input" method="POST" enctype="multipart/form-data">
+                                <form action="/Pengaduan_online/update/<?= $pengaduan['idPengaduan']; ?>" method="POST" enctype="multipart/form-data">
+
+                                    <div class="my-3">
+                                        <label for="kategori">Kategori</label>
+                                        <select name="kategori" class="form-select" aria-label="Default select example">
+                                            <?php foreach ($kategori as $a) : ?>
+                                                <option value="<?= $a['idKategori'] ?>"><?= $a['namaKategori']; ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+
                                     <div class="mb-3">
                                         <label for="judul" class="col-md-2 col-form-label">Judul</label>
                                         <div class="col-md-10">
@@ -48,18 +58,9 @@
                                         <label for="isi">Isi</label>
                                         <textarea name="isi" class="form-control <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" rows="3" placeholder="Masukkan Isi"><?= (old('Isi')) ? old('Isi') : $pengaduan['Isi'] ?></textarea>
                                         <div class="invalid-feedback"><?= $validation->getError('isi'); ?></div>
+                                        <input type="hidden" name="idCustomer" value="<?= session('idCustomer'); ?>">
                                     </div>
 
-                                    <div class="my-3">
-                                        <label for="kategori">Kategori</label>
-                                        <select name="kategori" class="form-select" aria-label="Default select example">
-                                            <option value="Lelang">Lelang</option>
-                                            <option value="PKN">PKN</option>
-                                            <option value="Penilaian">Penilaian</option>
-                                            <option value="PN">PN</option>
-                                            <option value="Umum">Umum</option>
-                                        </select>
-                                    </div>
                                     <label for="lampiran">Lampiran</label><a href="/lampiran/<?= $pengaduan['Lampiran'] ?>">Lampiran</a>
                                     <div class="dropzone mb-3">
                                         <div class="fallback">

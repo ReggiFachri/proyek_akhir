@@ -37,6 +37,7 @@
                                             <strong>Identitas pengaju</strong><br>
                                             <?= $customer['Nama']; ?><br>
                                             <?= $customer['NIK']; ?><br>
+                                            <?= $customer['Email']; ?><br>
                                         </address>
                                     </div>
                                     <div class="col-6">
