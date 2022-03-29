@@ -35,6 +35,52 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                                <h4 class="card-title">Statistik</h4>
+                                <div class="row">
+
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">Belum diproses</h5>
+                                                <?php foreach ($belum->getResultObject() as $a) : ?>
+                                                    <?= $a->idPengaduan; ?>
+                                                <?php endforeach ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">Sedang diproses</h5>
+                                                <?php foreach ($proses->getResultObject() as $a) : ?>
+                                                    <?= $a->idPengaduan; ?>
+                                                <?php endforeach ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">Selesai diproses</h5>
+                                                <?php foreach ($selesai->getResultObject() as $a) : ?>
+                                                    <?= $a->idPengaduan; ?>
+                                                <?php endforeach ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
 
                                 <h4 class="card-title"><?= $title; ?></h4>
                                 <?php if (session()->getFlashdata('pesan')) : ?>

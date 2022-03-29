@@ -59,7 +59,7 @@ class Pengaduan_onlineModel extends Model
          */
         $builder = $this->db->table('pengaduan_online');
         $builder->where('idCustomer', $id);
-        $builder->orlike('Status', 'Belum Diproses');
+        $builder->like('Status', 'Belum Diproses');
         $builder->selectCount('idPengaduan');
         $query = $builder->get();
         return $query;
@@ -73,7 +73,7 @@ class Pengaduan_onlineModel extends Model
          */
         $builder = $this->db->table('pengaduan_online');
         $builder->where('idCustomer', $id);
-        $builder->orlike('Status', 'Selesai Diproses');
+        $builder->like('Status', 'Selesai Diproses');
         $builder->selectCount('idPengaduan');
         $query = $builder->get();
         return $query;
