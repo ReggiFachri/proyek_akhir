@@ -82,10 +82,10 @@ $routes->get('/Pengaduan_online/rating/(:num)', 'pengaduan_online::rating/$1');
 
 // Admin
 $routes->get('/admin', 'Admin_PO::index');
-$routes->get('/admin/tanggapan/(:num)', 'Admin_PO::tanggapan/$1');
-$routes->get('/admin/inputTanggapan', 'Admin_PO::inputTanggapan');
-$routes->get('/admin/proses/(:num)', 'Admin_PO::proses/$1');
-$routes->get('/admin/detail/(:num)', 'Admin_PO::detail/$1');
+$routes->get('/admin/tanggapan/(:num)', 'Admin_pengaduan::tanggapan/$1');
+$routes->get('/admin/input', 'Admin_pengaduan::input');
+$routes->get('/admin/proses/(:num)', 'Admin_pengaduan::proses/$1');
+$routes->get('/admin/detail/(:num)', 'Admin_pengaduan::detail/$1');
 
 
 /*

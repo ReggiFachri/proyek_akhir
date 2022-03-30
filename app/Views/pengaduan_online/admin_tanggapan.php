@@ -32,7 +32,15 @@
                             <div class="card-body">
 
                                 <h2 class="card-title"><?= $title ?></h2>
-                                <form action="/admin/inputTanggapan" class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                                <form action="/admin/input" class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+
+                                    <div class="mb-3">
+                                        <select name="status" class="form-select" aria-label="Default select example">
+                                            <option value="Sedang Diproses">Sedang Diproses</option>
+                                            <option value="Selesai Diproses">Selesai Diproses</option>
+                                            <option value="Tidak Bisa Diproses">Tidak Bisa Diproses</option>
+                                        </select>
+                                    </div>
 
                                     <div class="mb-3">
                                         <label for="isi">Tanggapan</label>

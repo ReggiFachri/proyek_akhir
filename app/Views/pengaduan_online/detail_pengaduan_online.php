@@ -35,9 +35,21 @@
                                     <div class="col-6">
                                         <address>
                                             <strong>Identitas pengaju</strong><br>
-                                            <?= $customer['Nama']; ?><br>
-                                            <?= $customer['NIK']; ?><br>
-                                            <?= $customer['Email']; ?><br>
+                                            <?php //getNamaKategori
+                                            $Nama = '';
+                                            $NIK = '';
+                                            $Email = '';
+                                            foreach ($customer as $a) {
+                                                if ($pengaduan['idCustomer'] == $a['idCustomer']) {
+                                                    $Nama = $a['Nama'];
+                                                    $NIK = $a['NIK'];
+                                                    $Email = $a['Email'];
+                                                }
+                                            }
+                                            ?>
+                                            <?= $Nama; ?><br>
+                                            <?= $NIK; ?><br>
+                                            <?= $Email; ?><br>
                                         </address>
                                     </div>
                                     <div class="col-6">

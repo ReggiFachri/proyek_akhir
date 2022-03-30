@@ -47,7 +47,7 @@ class Pengaduan_online extends BaseController
         $data = [
             'title' => 'Detail Pengaduan Online',
             'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id),
-            'customer' => $this->CustModel->getCustomer(session('idCustomer')),
+            'customer' => $this->CustModel->getCustomer(),
             'kategori' => $this->KategoriModel->getKategori()
         ];
 
