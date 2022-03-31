@@ -91,7 +91,7 @@ class Admin_pengaduan extends BaseController
             $validation =  \Config\Services::validation();
             return redirect()->to('/admin/tanggapan')->withInput()->with('validation', $validation);
         }
-
+    
         //ambil file
         $lampiran = $this->request->getFile('lampiran');
         if ($lampiran->getError() == 4) {
