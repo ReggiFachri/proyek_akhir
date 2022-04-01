@@ -24,8 +24,8 @@ class Pengaduan_online extends BaseController
         $data = [
             'title' => 'Riwayat Pengaduan Online',
             'pengaduan' => $this->Pengaduan_onlineModel->listPengaduanCustomer(session('idCustomer')),
-            'proses' => $this->Pengaduan_onlineModel->jumlahPengaduanDiproses(session('idCustomer')),
             'belum' => $this->Pengaduan_onlineModel->jumlahPengaduanBelumDiproses(session('idCustomer')),
+            'proses' => $this->Pengaduan_onlineModel->jumlahPengaduanDiproses(session('idCustomer')),
             'selesai' => $this->Pengaduan_onlineModel->jumlahPengaduanSelesaiDiproses(session('idCustomer')),
             'kategori' => $this->KategoriModel->getKategori()
         ];

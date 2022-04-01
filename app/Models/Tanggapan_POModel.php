@@ -9,7 +9,7 @@ class Tanggapan_POModel extends Model
     protected $table      = 'tanggapan_po';
     protected $primaryKey = 'idTanggapan_PO ';
 
-    protected $allowedFields = ['Isi', 'Lampiran', 'tgl_mulai', 'tgl_selesai', 'Rating', 'Ulasan', 'NIP', 'idPengaduan'];
+    protected $allowedFields = ['Isi', 'Lampiran', 'tgl_mulai', 'tgl_selesai', 'idPengaduan', 'idPetugas'];
 
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;

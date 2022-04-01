@@ -32,13 +32,14 @@
                             <div class="card-body">
 
                                 <h2 class="card-title"><?= $title ?></h2>
-                                <form action="/admin/input" class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                                <form action="/Admin_pengaduan/input" method="POST" enctype="multipart/form-data">
 
                                     <div class="mb-3">
                                         <select name="status" class="form-select" aria-label="Default select example">
-                                            <option value="Sedang Diproses">Sedang Diproses</option>
-                                            <option value="Selesai Diproses">Selesai Diproses</option>
-                                            <option value="Tidak Bisa Diproses">Tidak Bisa Diproses</option>
+                                            <option value="Selesai diproses">Selesai diproses</option>
+                                            <option value="Sedang diproses">Sedang diproses</option>
+                                            <option value="Tidak dapat diproses">Tidak dapat diproses</option>
+                                            <option value="Belum bisa diproses">Belum bisa diproses</option>
                                         </select>
                                     </div>
 
@@ -62,10 +63,11 @@
                                     </div>
 
                                     <input type="hidden" name="idPengaduan" value="<?= $idPengaduan; ?>">
+                                    <input type="hidden" name="idPetugas" value="1">
 
                                     <div class="mb-3 text-end">
                                         <button type="reset" class="btn btn-danger me-3">Reset</button>
-                                        <button type="submit" class="btn btn-primary" name="input_PO">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="tanggapan">Submit</button>
                                     </div>
                                 </form>
 
