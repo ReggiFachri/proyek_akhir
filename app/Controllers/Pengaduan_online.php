@@ -58,7 +58,6 @@ class Pengaduan_online extends BaseController
     {
         $data = [
             'title' => 'Pengajuan Pengaduan Online',
-            'validation' => \Config\Services::validation(),
             'kategori' => $this->KategoriModel->getKategori()
         ];
 
