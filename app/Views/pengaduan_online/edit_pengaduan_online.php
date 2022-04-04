@@ -47,17 +47,15 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="judul" class="col-md-2 col-form-label">Judul</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" type="text" name="judul" placeholder="Masukkan judul" value="<?= (old('judul')) ? old('judul') : $pengaduan['Judul'] ?>">
-                                            <div class="invalid-feedback"><?= $validation->getError('judul'); ?></div>
+                                        <label for="judul">Judul</label>
+                                        <div>
+                                            <input class="form-control" required minlength="5" type="text" name="judul" placeholder="Masukkan judul" value="<?= (old('judul')) ? old('judul') : $pengaduan['Judul'] ?>">
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="isi">Isi</label>
-                                        <textarea name="isi" class="form-control <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" rows="3" placeholder="Masukkan Isi"><?= (old('Isi')) ? old('Isi') : $pengaduan['Isi'] ?></textarea>
-                                        <div class="invalid-feedback"><?= $validation->getError('isi'); ?></div>
+                                        <textarea name="isi" class="form-control" required minlength="5" rows="3" placeholder="Masukkan Isi"><?= (old('Isi')) ? old('Isi') : $pengaduan['Isi'] ?></textarea>
                                         <input type="hidden" name="idCustomer" value="<?= session('idCustomer'); ?>">
                                     </div>
 

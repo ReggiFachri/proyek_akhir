@@ -155,8 +155,10 @@
                                     </div>
                                     <hr>
                                     <div class="row">
+                                        <?php
+                                        $tgl = date("d F Y", strtotime($pengaduan['updated_at'])); ?>
                                         <div class="col-6">
-                                            sudah mulai diproses sejak <?= $pengaduan['updated_at']; ?>
+                                            sudah mulai diproses sejak <?= $tgl; ?>
                                         </div>
                                     </div>
                                 </div>

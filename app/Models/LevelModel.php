@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class LevelModel extends Model
 {
-    protected $table = 'level_petugas';
+    protected $table = 'level_user';
     protected $primaryKey = 'idlevel';
 
     protected $allowedFields = ['Level'];

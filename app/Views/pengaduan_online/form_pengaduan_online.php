@@ -7,6 +7,8 @@
 
     <?= $this->include('partials/head-css') ?>
 
+    <link rel="stylesheet" href="/assets/libs/dropify/css/dropify.css">
+    <link rel="stylesheet" href="/assets/libs/dropify/css/dropify.min.css">
 </head>
 
 <?= $this->include('partials/body') ?>
@@ -58,10 +60,8 @@
 
                                     <label for="lampiran">Lampiran</label>
                                     <div class="mb-3">
-                                        <div class="input-group">
-                                            <input type="file" name="lampiran" class="form-control" id="customFile">
-                                        </div>
-                                        <p class="mt-2 ml text-secondary">file yang dilampirkan menggunakan format jpg, png, pdf, dan rar</p>
+                                        <input type="file" class="dropify" name="lampiran" />
+                                        <!-- <button type="button" class="dropify-clear">Remove</button> -->
                                     </div>
 
                                     <div class="mb-3 text-end">
@@ -95,9 +95,15 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Plugins js -->
-<script src="/assets/libs/dropzone/min/dropzone.min.js"></script>
+<!-- validation -->
 <script src="/assets/libs/parsleyjs/parsley.min.js"></script>
 <script src="/assets/js/pages/form-validation.init.js"></script>
+<!-- drag n drop file -->
+
+<script src="/assets/libs/dropify/js/dropify.js"></script>
+<script src="/assets/libs/dropify/js/dropify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/assets/js/custom_dropify.js"></script>
 
 <!-- App js -->
 <script src="/assets/js/app.js"></script>
