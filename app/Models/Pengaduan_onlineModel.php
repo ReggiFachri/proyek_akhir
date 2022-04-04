@@ -89,7 +89,7 @@ class Pengaduan_onlineModel extends Model
          */
         $builder = $this->db->table('pengaduan_online');
         $builder->notlike('Status', 'Dibatalkan');
-        $builder->where('idKategori', 4);
+        // $builder->where('idKategori', 4);
         // $builder->where('idLevel', '1');
         $query = $builder->get();
         return $query;

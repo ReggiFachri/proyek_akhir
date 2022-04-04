@@ -31,10 +31,11 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h2 class="card-title"><?= $title ?></h2>
+                                <h1 class="card-title"><?= $title ?></h1>
                                 <form action="/Admin_pengaduan/input" method="POST" enctype="multipart/form-data">
 
                                     <div class="mb-3">
+                                        <label for="isi">Status Pengaduan</label>
                                         <select name="status" class="form-select" aria-label="Default select example">
                                             <option value="Selesai diproses">Selesai diproses</option>
                                             <option value="Sedang diproses">Sedang diproses</option>
@@ -44,9 +45,8 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="isi">Tanggapan</label>
-                                        <textarea name="isi" class="form-control <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" rows="3" placeholder="Masukkan Isi"><?= old('isi'); ?></textarea>
-                                        <div class="invalid-feedback"><?= $validation->getError('isi'); ?></div>
+                                        <label for="isi">Uraian Tanggapan</label>
+                                        <textarea name="isi" class="form-control" required minlength="5" rows="3" placeholder="Masukkan Isi"><?= old('isi'); ?></textarea>
                                     </div>
 
                                     <label for="lampiran">Lampiran</label>
@@ -63,7 +63,6 @@
                                     </div>
 
                                     <input type="hidden" name="idPengaduan" value="<?= $idPengaduan; ?>">
-                                    <input type="hidden" name="idPetugas" value="1">
 
                                     <div class="mb-3 text-end">
                                         <button type="reset" class="btn btn-danger me-3">Reset</button>
@@ -96,7 +95,9 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Plugins js -->
-<script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="/assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="/assets/libs/parsleyjs/parsley.min.js"></script>
+<script src="/assets/js/pages/form-validation.init.js"></script>
 
 <!-- App js -->
 <script src="/assets/js/app.js"></script>

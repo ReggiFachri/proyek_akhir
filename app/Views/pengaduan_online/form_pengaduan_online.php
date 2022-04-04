@@ -33,7 +33,7 @@
 
                                 <h4 class="card-title"> <?= $title ?></h4>
 
-                                <form action="/Pengaduan_online/input" class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                                <form action="/Pengaduan_online/input" class="custom-validation" method="POST" enctype="multipart/form-data">
                                     <!-- beri penjelasan tiap input/desc -->
 
                                     <div class="my-3">
@@ -47,14 +47,12 @@
 
                                     <div class="mb-3">
                                         <label for="judul" class="col-md-2 col-form-label">Judul</label>
-                                        <input class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" type="text" name="judul" placeholder="Masukkan judul" value="<?= old('judul'); ?>">
-                                        <div class="invalid-feedback"><?= $validation->getError('judul'); ?></div>
+                                        <input class="form-control" type="text" name="judul" required minlength="5" placeholder="Masukkan judul" value="<?= old('judul'); ?>">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="isi">Isi</label>
-                                        <textarea name="isi" class="form-control <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" rows="3" placeholder="Masukkan Isi"><?= old('isi'); ?></textarea>
-                                        <div class="invalid-feedback"><?= $validation->getError('isi'); ?></div>
+                                        <textarea name="isi" class="form-control" rows="3" required minlength="5" placeholder="Masukkan Isi"><?= old('isi'); ?></textarea>
                                         <input type="hidden" name="idCustomer" value="<?= session('idCustomer'); ?>">
                                     </div>
 
@@ -97,10 +95,12 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Plugins js -->
-<script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="/assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="/assets/libs/parsleyjs/parsley.min.js"></script>
+<script src="/assets/js/pages/form-validation.init.js"></script>
 
 <!-- App js -->
-<script src="assets/js/app.js"></script>
+<script src="/assets/js/app.js"></script>
 
 </body>
 

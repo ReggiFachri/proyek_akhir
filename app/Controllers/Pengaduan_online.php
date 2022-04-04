@@ -5,18 +5,24 @@ namespace App\Controllers;
 use App\Models\Pengaduan_onlineModel;
 use App\Models\KategoriModel;
 use App\Models\CustModel;
+use App\Models\PetugasModel;
+use App\Models\Tanggapan_POModel;
 
 class Pengaduan_online extends BaseController
 {
     protected $Pengaduan_onlineModel;
     protected $KategoriModel;
     protected $CustModel;
+    protected $PetugasModel;
+    protected $Tanggapan_POModel;
 
     public function __construct()
     {
         $this->Pengaduan_onlineModel = new Pengaduan_onlineModel();
         $this->KategoriModel = new kategoriModel();
         $this->CustModel = new CustModel();
+        $this->PetugasModel = new PetugasModel();
+        $this->Tanggapan_POModel = new Tanggapan_POModel();
     }
 
     public function index()
@@ -33,9 +39,21 @@ class Pengaduan_online extends BaseController
         return view('pengaduan_online/view_pengaduan_online', $data);
     }
 
+    public function profile()
+    {
+        $data = [
+            'title' => 'Profile Customer',
+            'customer' => $this->CustModel->getCustomer(session('idCustomer'))
+        ];
+
+        return view('pengaduan_online/profile_customer', $data);
+    }
+
+
     public function rating($id)
     {
         $data = [
+            'title' => 'Rating & Ulasan',
             'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id)
         ];
 
@@ -48,7 +66,9 @@ class Pengaduan_online extends BaseController
             'title' => 'Detail Pengaduan Online',
             'pengaduan' => $this->Pengaduan_onlineModel->getPengaduan($id),
             'customer' => $this->CustModel->getCustomer(),
-            'kategori' => $this->KategoriModel->getKategori()
+            'kategori' => $this->KategoriModel->getKategori(),
+            'petugas' => $this->PetugasModel->getPetugas(),
+            'tanggapan' => $this->Tanggapan_POModel->getTanggapan()
         ];
 
         return view('pengaduan_online/detail_pengaduan_online', $data);
@@ -80,32 +100,6 @@ class Pengaduan_online extends BaseController
     public function input()
     // tambah label tiap rules
     {
-        if (!$this->validate([
-            'judul' => [
-                'rules' => 'min_length[5]',
-                'errors' => [
-                    'min_length' => 'Judul pengaduan minimal 5 karakter'
-                ]
-            ],
-            'isi' => [
-                'rules' => 'max_length[200]|min_length[5]',
-                'errors' => [
-                    'max_length' => 'Isi pengaduan maksimal 200 karakter',
-                    'min_length' => 'Isi pengaduan minimal 5 karakter'
-                ]
-            ],
-            'lampiran' => [
-                'rules' => 'max_size[lampiran,5120]|ext_in[lampiran,jpg,jpeg,png,pdf,mp3,mpeg]',
-                'errors' => [
-                    'max_size' => 'Maksimal 5MB',
-                    'ext_in' => 'jenis file harus jpg, png, pdf, mp3, atau mpeg'
-                ]
-            ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/Pengaduan_online/form')->withInput()->with('validation', $validation);
-        }
-
         //ambil file
         $lampiran = $this->request->getFile('lampiran');
         if ($lampiran->getError() == 4) {
@@ -134,32 +128,6 @@ class Pengaduan_online extends BaseController
 
     public function update($id)
     {
-        if (!$this->validate([
-            'judul' => [
-                'rules' => 'min_length[5]',
-                'errors' => [
-                    'min_length' => 'Judul pengaduan minimal 5 karakter'
-                ]
-            ],
-            'isi' => [
-                'rules' => 'max_length[200]|min_length[5]',
-                'errors' => [
-                    'max_length' => 'Isi pengaduan maksimal 200 karakter',
-                    'min_length' => 'Isi pengaduan minimal 5 karakter'
-                ]
-            ],
-            'lampiran' => [
-                'rules' => 'max_size[lampiran,5120]|ext_in[lampiran,jpg,jpeg,png,pdf,mp3,mpeg]',
-                'errors' => [
-                    'max_size' => 'Maksimal 5MB',
-                    'ext_in' => 'jenis file harus jpg, png, pdf, mp3, atau mpeg'
-                ]
-            ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/Pengaduan_online/Edit/' . $id)->withInput()->with('validation', $validation);
-        }
-
         $pengaduan = $this->Pengaduan_onlineModel->find($id);
 
         if ($pengaduan['Lampiran'] != 'user.png') {

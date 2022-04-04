@@ -110,25 +110,41 @@
                                     </div>
                                     <hr>
                                     <div class="row">
+                                        <?php //getNamaKategori
+                                        $Nama = '';
+                                        $NIP = '';
+                                        $Email = '';
+                                        $Isi = '';
+                                        $Lampiran = '';
+                                        $idPetugas = '';
+                                        foreach ($tanggapan as $a) {
+                                            if ($pengaduan['idPengaduan'] == $a['idPengaduan']) {
+                                                $Isi = $a['Isi'];
+                                                $Lampiran = $a['Lampiran'];
+                                                $idPetugas = $a['idPetugas'];
+                                            }
+                                        }
+                                        foreach ($petugas as $b) {
+                                            if ($idPetugas == $b['idPetugas']) {
+                                                $Nama = $b['Nama'];
+                                                $NIP = $b['NIP'];
+                                                $Email = $b['Email'];
+                                            }
+                                        }
+                                        ?>
                                         <div class="col-6">
                                             <address>
                                                 <strong>Petugas</strong><br>
-                                                <?php //getNamaKategori
-                                                $Nama = '';
-                                                $NIP = '';
-                                                $Email = '';
-                                                foreach ($customer as $a) {
-                                                    if ($pengaduan['idCustomer'] == $a['idCustomer']) {
-                                                        $Nama = $a['Nama'];
-                                                        $NIK = $a['NIK'];
-                                                        $Email = $a['Email'];
-                                                    }
-                                                }
-                                                ?>
                                                 <?= $Nama; ?><br>
-                                                <?= $NIK; ?><br>
+                                                <?= $NIP; ?><br>
                                                 <?= $Email; ?><br>
                                             </address>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <strong>Uraian Tanggapan</strong><br>
+                                            <?= $Isi; ?><br>
+                                            <a href="/Lampiran/<?= $Lampiran; ?>">Lampiran</a>
                                         </div>
                                     </div>
                                 </div>

@@ -100,12 +100,41 @@
                                     </div>
                                     <hr>
                                     <div class="row">
+                                        <?php //getNamaKategori
+                                        $Nama = '';
+                                        $NIP = '';
+                                        $Email = '';
+                                        $Isi = '';
+                                        $Lampiran = '';
+                                        $idPetugas = '';
+                                        foreach ($tanggapan as $a) {
+                                            if ($pengaduan['idPengaduan'] == $a['idPengaduan']) {
+                                                $Isi = $a['Isi'];
+                                                $Lampiran = $a['Lampiran'];
+                                                $idPetugas = $a['idPetugas'];
+                                            }
+                                        }
+                                        foreach ($petugas as $b) {
+                                            if ($idPetugas == $b['idPetugas']) {
+                                                $Nama = $b['Nama'];
+                                                $NIP = $b['NIP'];
+                                                $Email = $b['Email'];
+                                            }
+                                        }
+                                        ?>
                                         <div class="col-6">
                                             <address>
-                                                dibalas oleh<br>
-                                                balasan<br>
-                                                lampiran
+                                                <strong>Petugas</strong><br>
+                                                <?= $Nama; ?><br>
+                                                <?= $NIP; ?><br>
+                                                <?= $Email; ?><br>
                                             </address>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <strong>Uraian Tanggapan</strong><br>
+                                            <?= $Isi; ?><br>
+                                            <a href="/Lampiran/<?= $Lampiran; ?>">Lampiran</a>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +156,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-6">
-                                            sudah mulai diproses sejak tgl sekian
+                                            sudah mulai diproses sejak <?= $pengaduan['updated_at']; ?>
                                         </div>
                                     </div>
                                 </div>
