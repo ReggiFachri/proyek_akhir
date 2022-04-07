@@ -36,20 +36,27 @@
 
                                 <h4 class="card-title"> <?= $title ?></h4>
 
-                                <form action="/Pengaduan_online/rate" class="custom-validation" method="POST" enctype="multipart/form-data">
+                                <form action="/Pengaduan_online/in_rate" class="custom-validation" method="POST" enctype="multipart/form-data">
                                     <!-- beri penjelasan tiap input/desc -->
 
                                     <div class="my-3">
                                         <label for="rating">Rating</label>
-                                        <i class="mdi mdi-star"></i>
-                                        <div class="rating-star">
+                                        <!-- <div class="rating-star">
                                             <input type="hidden" class="rating" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-muted" />
-                                        </div>
+                                        </div> -->
+                                        <select name="rating" class="form-select" aria-label="Default select example">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="ulasan">Ulasan</label>
                                         <input class="form-control" type="text" name="ulasan" required minlength="5" placeholder="Berikan ulasan" value="<?= old('ulasan'); ?>">
+                                        <input type="hidden" name="idPengaduan" value="<?= $pengaduan['idPengaduan'] ?>">
                                     </div>
 
                                     <div class="mb-3 text-end">

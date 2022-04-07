@@ -9,7 +9,7 @@ class Pengaduan_onlineModel extends Model
     protected $table      = 'pengaduan_online';
     protected $primaryKey = 'idPengaduan';
 
-    protected $allowedFields = ['Judul', 'Isi', 'idKategori', 'Lampiran', 'Status', 'idCustomer'];
+    protected $allowedFields = ['Judul', 'Isi', 'idKategori', 'Lampiran', 'Status', 'idCustomer', 'Rating', 'Ulasan'];
 
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;

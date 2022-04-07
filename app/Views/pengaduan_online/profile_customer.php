@@ -36,9 +36,12 @@
 
                                 <h4 class="card-title"> <?= $title ?></h4>
 
-                                <form action="/Pengaduan_online/input" class="custom-validation" method="POST" enctype="multipart/form-data">
+                                <form action="/Pengaduan_online/in_profile" class="custom-validation" method="POST" enctype="multipart/form-data">
                                     <!-- beri penjelasan tiap input/desc -->
                                     <div class="row mt-3">
+                                        <?php if (session()->getFlashdata('pesan')) : ?>
+                                            <div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan'); ?></div>
+                                        <?php endif; ?>
                                         <div class="col-1">
                                             <div class="my-2">
                                                 <label class="m-2">Nama</label>
@@ -65,6 +68,7 @@
                                             </div>
                                             <div class="my-2">
                                                 <input class="form-control" type="text" name="pekerjaan" required minlength="5" value="<?= $customer['Pekerjaan']; ?>">
+                                                <input type="hidden" name="idCustomer" value="<?= $customer['idCustomer']; ?>">
                                             </div>
 
                                             <div class="my-3 text-end">

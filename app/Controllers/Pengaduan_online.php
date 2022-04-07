@@ -7,6 +7,7 @@ use App\Models\KategoriModel;
 use App\Models\CustModel;
 use App\Models\PetugasModel;
 use App\Models\Tanggapan_POModel;
+use PhpParser\Node\Expr\FuncCall;
 
 class Pengaduan_online extends BaseController
 {
@@ -95,6 +96,33 @@ class Pengaduan_online extends BaseController
         ];
 
         return view('pengaduan_online/edit_pengaduan_online', $data);
+    }
+
+    public function in_profile()
+    {
+        $this->CustModel->save([
+            'idCustomer' => $this->request->getVar('idCustomer'),
+            'Nama' => $this->request->getVar('nama'),
+            'Email' => $this->request->getVar('email'),
+            'Pekerjaan' => $this->request->getVar('pekerjaan')
+        ]);
+
+        session()->setFlashdata('pesan', 'berhasil menyunting profil.');
+
+        return redirect()->to('/Pengaduan_online/profile');
+    }
+
+    public function in_rate()
+    {
+        $this->Pengaduan_onlineModel->save([
+            'idPengaduan' => $this->request->getVar('idPengaduan'),
+            'Rating' => $this->request->getVar('rating'),
+            'Ulasan' => $this->request->getVar('ulasan')
+        ]);
+
+        session()->setFlashdata('pesan', 'berhasil memberikan ulasan.');
+
+        return redirect()->to('/Pengaduan_online');
     }
 
     public function input()

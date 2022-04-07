@@ -92,7 +92,7 @@
 <?= $this->include('partials/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
-<?= $this->include('partials/vendor-scripts') ?>
+<?= $this->include('/partials/vendor-scripts') ?>
 
 <!-- Plugins js -->
 <!-- validation -->
