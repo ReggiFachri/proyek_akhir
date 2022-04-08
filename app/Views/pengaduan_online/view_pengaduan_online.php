@@ -94,7 +94,7 @@
                                             <th>Kategori</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th style="min-width: 25%;">Aksi</th>
                                         </tr>
                                     </thead>
 
@@ -109,9 +109,10 @@
                                             }
                                             ?>
                                             <tr>
+                                                <?php $tgl = date("d F Y", strtotime($a->updated_at)); ?>
                                                 <td><?= $a->Judul; ?></td>
                                                 <td><?= $k; ?></td>
-                                                <td><?= $a->created_at; ?></td>
+                                                <td><?= $tgl; ?></td>
                                                 <td><?= $a->Status; ?></td>
                                                 <td>
                                                     <a href="/Pengaduan_online/detail/<?= $a->idPengaduan; ?>" class="btn btn-primary btn-sm w-xs">Detail</a>
@@ -122,8 +123,10 @@
                                                         <a href="/Pengaduan_online/edit/<?= $a->idPengaduan; ?>" class="btn btn-primary btn-sm w-xs">Ubah</a>
                                                         <a href="/Pengaduan_online/delete/<?= $a->idPengaduan; ?>" class="btn btn-danger btn-sm w-xs">Hapus</a>
                                                     <?php elseif ($a->Status == 'Selesai diproses') : ?>
-                                                        <a href="/Pengaduan_online/rating/<?= $a->idPengaduan; ?>" class="btn btn-success btn-sm w-xs">Rating</a>
-                                                        <a href="/Pengaduan_online/tanggapan/<?= $a->idPengaduan; ?>" class="btn btn-success btn-sm w-xs">Tanggapan</a>
+                                                        <?php if ($a->Rating < 1) : ?>
+                                                            <a href="/Pengaduan_online/rating/<?= $a->idPengaduan; ?>" class="btn btn-success btn-sm w-xs">Rating</a>
+                                                            <a href="/Pengaduan_online/tanggapan/<?= $a->idPengaduan; ?>" class="btn btn-success btn-sm w-xs">Tanggapan</a>
+                                                        <?php endif ?>
                                                     <?php endif ?>
                                                 </td>
                                             </tr>

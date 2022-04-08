@@ -3,13 +3,21 @@
 <head>
     <meta charset="utf-8">
 
-    <?= $title ?>
-
-    <?= $this->include('partials/head-css') ?>
+    <?= $this->include('partials/title-meta') ?>
 
     <link href="/assets/libs/bootstrap-rating/bootstrap-rating.css" rel="stylesheet" type="text/css" />
 
+    <?= $this->include('partials/head-css') ?>
 
+    <style>
+        .custom-star {
+            font-size: 3em;
+        }
+
+        .custom-star2 {
+            font-size: 1.8em;
+        }
+    </style>
 </head>
 
 <?= $this->include('partials/body') ?>
@@ -41,16 +49,9 @@
 
                                     <div class="my-3">
                                         <label for="rating">Rating</label>
-                                        <!-- <div class="rating-star">
-                                            <input type="hidden" class="rating" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-muted" />
-                                        </div> -->
-                                        <select name="rating" class="form-select" aria-label="Default select example">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                        <div class="rating-star text-center">
+                                            <input type="hidden" name="rating" class="rating" data-filled="mdi mdi-star custom-star2 text-primary" data-empty="mdi mdi-star-outline custom-star text-muted" />
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">
@@ -90,15 +91,11 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Bootstrap rating js -->
-<script src="<?php base_url('/assets/libs/bootstrap-rating/bootstrap-rating.min.js') ?>"></script>
-<script src="<?php base_url('/assets/js/pages/rating-init.js') ?>"></script>
-
-<!-- Bootstrap rating js -->
-<script type="text/javascript" src="<?php base_url('/assets/libs/bootstrap-rating/bootstrap-rating.min.js') ?>"></script>
-<script type="text/javascript" src=" <?php base_url('/assets/js/pages/rating-init.js') ?>"></script>
+<script type="text/javascript" src="/assets/libs/bootstrap-rating/bootstrap-rating.min.js"></script>
+<script type="text/javascript" src="/assets/js/pages/rating-init.js"></script>
 
 <!-- App js -->
-<script src="<?php base_url('/assets/js/app.js') ?>"></script>
+<script src="/assets/js/app.js"></script>
 
 </body>
 
