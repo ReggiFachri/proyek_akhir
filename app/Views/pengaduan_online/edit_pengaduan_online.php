@@ -5,7 +5,8 @@
     <?= $title ?>
 
     <!-- Plugins css -->
-    <link href="assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/libs/dropify/css/dropify.css">
+    <link rel="stylesheet" href="/assets/libs/dropify/css/dropify.min.css">
 
     <?= $this->include('partials/head-css') ?>
 
@@ -59,17 +60,9 @@
                                         <input type="hidden" name="idCustomer" value="<?= session('idCustomer'); ?>">
                                     </div>
 
-                                    <label for="lampiran">Lampiran</label><a href="/lampiran/<?= $pengaduan['Lampiran'] ?>">Lampiran</a>
-                                    <div class="dropzone mb-3">
-                                        <div class="fallback">
-                                            <input name="lampiran" type="file">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted mdi mdi-upload-network-outline"></i>
-                                            </div>
-                                            <h4>Drop files here or click to upload.</h4>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="lampiran">Lampiran</label>: <a href="/lampiran/<?= $pengaduan['Lampiran'] ?>">Lampiran</a>
+                                        <input type="file" name="lampiran" class="dropify" />
                                     </div>
 
                                     <div class="mb-3 text-end">
@@ -103,7 +96,13 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Plugins js -->
-<script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+<!-- validation -->
+<script src="/assets/libs/parsleyjs/parsley.min.js"></script>
+<script src="/assets/js/pages/form-validation.init.js"></script>
+<!-- drag n drop file -->
+<script src="/assets/libs/dropify/js/dropify.js"></script>
+<script src="/assets/libs/dropify/js/dropify.min.js"></script>
+<script src="/assets/js/custom-dropify.js"></script>
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>

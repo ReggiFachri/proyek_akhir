@@ -125,7 +125,6 @@
                                                     <?php elseif ($a->Status == 'Selesai diproses') : ?>
                                                         <?php if ($a->Rating < 1) : ?>
                                                             <a href="/Pengaduan_online/rating/<?= $a->idPengaduan; ?>" class="btn btn-success btn-sm w-xs">Rating</a>
-                                                            <a href="/Pengaduan_online/tanggapan/<?= $a->idPengaduan; ?>" class="btn btn-success btn-sm w-xs">Tanggapan</a>
                                                         <?php endif ?>
                                                     <?php endif ?>
                                                 </td>

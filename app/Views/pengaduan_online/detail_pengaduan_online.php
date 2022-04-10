@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="col-6 mt-3">
                                         <address>
-                                            <strong>Tanggal Masuk</strong><br>
+                                            <strong>Tanggal dibuat</strong><br>
                                             <?= $pengaduan['created_at']; ?><br><br>
                                         </address>
                                     </div>

@@ -61,8 +61,8 @@
                                     <label for="lampiran">Lampiran</label>
                                     <div class="mb-3">
                                         <input type="file" class="dropify" name="lampiran" />
-                                        <!-- <button type="button" class="dropify-clear">Remove</button> -->
                                     </div>
+                                    <p class="text-muted">file yang dilampirkan menggunakan format jpg, png, pdf, dan rar</p>
 
                                     <div class="mb-3 text-end">
                                         <button type="reset" class="btn btn-danger me-3">Reset</button>
@@ -102,8 +102,7 @@
 
 <script src="/assets/libs/dropify/js/dropify.js"></script>
 <script src="/assets/libs/dropify/js/dropify.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="/assets/js/custom_dropify.js"></script>
+<script src="/assets/js/custom-dropify.js"></script>
 
 <!-- App js -->
 <script src="/assets/js/app.js"></script>
