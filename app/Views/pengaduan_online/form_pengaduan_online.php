@@ -99,7 +99,6 @@
 <script src="/assets/libs/parsleyjs/parsley.min.js"></script>
 <script src="/assets/js/pages/form-validation.init.js"></script>
 <!-- drag n drop file -->
-
 <script src="/assets/libs/dropify/js/dropify.js"></script>
 <script src="/assets/libs/dropify/js/dropify.min.js"></script>
 <script src="/assets/js/custom-dropify.js"></script>

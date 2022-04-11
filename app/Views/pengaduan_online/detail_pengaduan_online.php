@@ -78,7 +78,9 @@
                                     <div class="col-6 mt-3">
                                         <address>
                                             <strong>Tanggal dibuat</strong><br>
-                                            <?= $pengaduan['created_at']; ?><br><br>
+                                            <?php
+                                            $tgl = date("d F Y H:i", strtotime($pengaduan['created_at'])); ?>
+                                            <?= $tgl; ?><br><br>
                                         </address>
                                     </div>
                                 </div>
@@ -93,7 +95,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="invoice-title">
-                                        <h4 class="float-end font-size-16"><?= $pengaduan['Judul']; ?></h4>
                                         <div class="mb-4">
                                             <h5>Tanggapan</h1>
                                         </div>
@@ -148,7 +149,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="invoice-title">
-                                        <h4 class="float-end font-size-16"><?= $pengaduan['Judul']; ?></h4>
                                         <div class="mb-4">
                                             <h5>Tanggapan</h1>
                                         </div>
@@ -156,7 +156,7 @@
                                     <hr>
                                     <div class="row">
                                         <?php
-                                        $tgl = date("d F Y", strtotime($pengaduan['updated_at'])); ?>
+                                        $tgl = date("d F Y H:i", strtotime($pengaduan['updated_at'])); ?>
                                         <div class="col-6">
                                             sudah mulai diproses sejak <?= $tgl; ?>
                                         </div>

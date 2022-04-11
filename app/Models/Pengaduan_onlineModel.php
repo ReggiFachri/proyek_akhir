@@ -37,7 +37,7 @@ class Pengaduan_onlineModel extends Model
         return $query;
     }
 
-    public function jumlahPengaduanDiproses($id)
+    public function jumlahPengaduan($id, $status)
     {
         /**
          * SELECT * FROM pengaduan_online
@@ -45,35 +45,7 @@ class Pengaduan_onlineModel extends Model
          */
         $builder = $this->db->table('pengaduan_online');
         $builder->where('idCustomer', $id);
-        $builder->like('Status', 'Sedang Diproses');
-        $builder->selectCount('idPengaduan');
-        $query = $builder->get();
-        return $query;
-    }
-
-    public function jumlahPengaduanBelumDiproses($id)
-    {
-        /**
-         * SELECT * FROM pengaduan_online
-         * WHERE idCustomer = '1' AND Status LIKE "%Belum Diproses%"
-         */
-        $builder = $this->db->table('pengaduan_online');
-        $builder->where('idCustomer', $id);
-        $builder->like('Status', 'Belum Diproses');
-        $builder->selectCount('idPengaduan');
-        $query = $builder->get();
-        return $query;
-    }
-
-    public function jumlahPengaduanSelesaiDiproses($id)
-    {
-        /**
-         * SELECT * FROM pengaduan_online
-         * WHERE idCustomer = '1' AND Status LIKE "%Belum Diproses%"
-         */
-        $builder = $this->db->table('pengaduan_online');
-        $builder->where('idCustomer', $id);
-        $builder->like('Status', 'Selesai Diproses');
+        $builder->like('Status', $status);
         $builder->selectCount('idPengaduan');
         $query = $builder->get();
         return $query;
