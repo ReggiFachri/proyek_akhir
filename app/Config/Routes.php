@@ -70,6 +70,7 @@ $routes->get('/logout_petugas', 'AuthPetugas::logout');
 
 // Pengaduan
 $routes->get('/Pengaduan_online/profile', 'pengaduan_online::profile');
+$routes->get('/Pengaduan_online/(:any)', 'Pengaduan_online::daftar/$1');
 $routes->get('/Pengaduan_online', 'pengaduan_online::index');
 $routes->get('/Pengaduan_online/form', 'pengaduan_online::form');
 $routes->get('/delete/(:num)', 'pengaduan_online::delete/$1');
@@ -83,6 +84,7 @@ $routes->get('/Pengaduan_online/rating/(:num)', 'pengaduan_online::rating/$1');
 
 // Admin
 $routes->get('/admin', 'Admin_pengaduan::index');
+$routes->get('/admin/(:any)', 'Admin_pengaduan::daftar/$1');
 $routes->get('/admin/tanggapan/(:num)', 'Admin_pengaduan::tanggapan/$1');
 // $routes->get('/admin/input', 'Admin_pengaduan::input');
 $routes->get('/admin/proses/(:num)', 'Admin_pengaduan::proses/$1');

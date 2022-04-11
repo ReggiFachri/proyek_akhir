@@ -40,6 +40,17 @@ class Pengaduan_online extends BaseController
         return view('pengaduan_online/view_pengaduan_online', $data);
     }
 
+    public function daftar($status)
+    {
+        $data = [
+            'title' => 'Riwayat Pengaduan Online',
+            'pengaduan' => $this->Pengaduan_onlineModel->listPengaduanCustomer2(session('idCustomer'), $status),
+            'kategori' => $this->KategoriModel->getKategori()
+        ];
+
+        return view('pengaduan_online/daftar_pengaduan_online', $data);
+    }
+
     public function profile()
     {
         $data = [

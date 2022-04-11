@@ -55,8 +55,8 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="ulasan">Ulasan</label>
-                                        <input class="form-control" type="text" name="ulasan" required minlength="5" placeholder="Berikan ulasan" value="<?= old('ulasan'); ?>">
+                                        <label for="ulasan">Komentar</label>
+                                        <input class="form-control" type="text" name="ulasan" required minlength="5" placeholder="Berikan komentar" value="<?= old('ulasan'); ?>">
                                         <input type="hidden" name="idPengaduan" value="<?= $pengaduan['idPengaduan'] ?>">
                                     </div>
 
@@ -65,6 +65,8 @@
                                         <button type="submit" class="btn btn-primary" name="rate">Submit</button>
                                     </div>
                                 </form>
+
+
 
                             </div>
                         </div>

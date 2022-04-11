@@ -4,10 +4,10 @@
 
     <?= $title ?>
 
-    <!-- Plugins css -->
-    <link href="/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-
     <?= $this->include('partials/head-css') ?>
+
+    <link rel="stylesheet" href="/assets/libs/dropify/css/dropify.css">
+    <link rel="stylesheet" href="/assets/libs/dropify/css/dropify.min.css">
 
 </head>
 
@@ -40,7 +40,6 @@
                                             <option value="Selesai diproses">Selesai diproses</option>
                                             <option value="Sedang diproses">Sedang diproses</option>
                                             <option value="Tidak dapat diproses">Tidak dapat diproses</option>
-                                            <option value="Belum bisa diproses">Belum bisa diproses</option>
                                         </select>
                                     </div>
 
@@ -50,17 +49,10 @@
                                     </div>
 
                                     <label for="lampiran">Lampiran</label>
-                                    <div class="dropzone mb-3">
-                                        <div class="fallback">
-                                            <input name="lampiran" type="file">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted mdi mdi-upload-network-outline"></i>
-                                            </div>
-                                            <h4>Drop files here or click to upload.</h4>
-                                        </div>
+                                    <div class="mb-3">
+                                        <input type="file" class="dropify" name="lampiran" />
                                     </div>
+                                    <p class="text-muted">file yang dilampirkan menggunakan format jpg, png, pdf, dan rar</p>
 
                                     <input type="hidden" name="idPengaduan" value="<?= $idPengaduan; ?>">
 
@@ -95,9 +87,13 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Plugins js -->
-<script src="/assets/libs/dropzone/min/dropzone.min.js"></script>
+<!-- validation -->
 <script src="/assets/libs/parsleyjs/parsley.min.js"></script>
 <script src="/assets/js/pages/form-validation.init.js"></script>
+<!-- drag n drop file -->
+<script src="/assets/libs/dropify/js/dropify.js"></script>
+<script src="/assets/libs/dropify/js/dropify.min.js"></script>
+<script src="/assets/js/custom-dropify.js"></script>
 
 <!-- App js -->
 <script src="/assets/js/app.js"></script>

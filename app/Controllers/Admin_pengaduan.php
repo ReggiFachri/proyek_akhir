@@ -30,13 +30,24 @@ class Admin_pengaduan extends BaseController
         $data = [
             'title' => 'Daftar Pengaduan Online',
             'pengaduan' => $this->Pengaduan_onlineModel->listPengaduanAdmin(),
-            'belum' => $this->Pengaduan_onlineModel->jumlahPengaduanBelumDiprosesAdmin(),
-            'proses' => $this->Pengaduan_onlineModel->jumlahPengaduanDiprosesAdmin(),
-            'selesai' => $this->Pengaduan_onlineModel->jumlahPengaduanSelesaiDiprosesAdmin(),
+            'belum' => $this->Pengaduan_onlineModel->jumlahPengaduanAdmin('Belum diproses'),
+            'proses' => $this->Pengaduan_onlineModel->jumlahPengaduanAdmin('Sedang diproses'),
+            'selesai' => $this->Pengaduan_onlineModel->jumlahPengaduanAdmin('Selesai diproses'),
             'kategori' => $this->KategoriModel->getKategori()
         ];
 
         return view('pengaduan_online/admin_beranda', $data);
+    }
+
+    public function daftar($status)
+    {
+        $data = [
+            'title' => 'Daftar Pengaduan Online',
+            'pengaduan' => $this->Pengaduan_onlineModel->listPengaduanAdmin2($status),
+            'kategori' => $this->KategoriModel->getKategori()
+        ];
+
+        return view('pengaduan_online/admin_daftar', $data);
     }
 
     public function detail($id)

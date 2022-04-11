@@ -77,8 +77,10 @@
                                     </div>
                                     <div class="col-6 mt-3">
                                         <address>
-                                            <strong>Tanggal Masuk</strong><br>
-                                            <?= $pengaduan['created_at']; ?><br><br>
+                                            <strong>Tanggal dibuat</strong><br>
+                                            <?php
+                                            $tgl = date("d F Y H:i", strtotime($pengaduan['created_at'])); ?>
+                                            <?= $tgl; ?><br><br>
                                         </address>
                                     </div>
                                 </div>

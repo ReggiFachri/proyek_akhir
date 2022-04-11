@@ -80,7 +80,7 @@
                                             <strong>Tanggal dibuat</strong><br>
                                             <?php
                                             $tgl = date("d F Y H:i", strtotime($pengaduan['created_at'])); ?>
-                                            <?= $tgl; ?><br><br>
+                                            <?= $tgl; ?><br>
                                         </address>
                                     </div>
                                 </div>

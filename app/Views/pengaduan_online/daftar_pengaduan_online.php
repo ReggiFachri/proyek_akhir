@@ -35,63 +35,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Rekap Pengaduan</h4>
-                                <div class="row">
-
-                                    <div class="col-4">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <a href="/Pengaduan_online/Belum">
-                                                    <h5 class="card-title">Belum diproses</h5>
-                                                </a>
-                                                <?php foreach ($belum->getResultObject() as $a) : ?>
-                                                    <?= $a->idPengaduan; ?>
-                                                <?php endforeach ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <a href="/Pengaduan_online/Sedang">
-                                                    <h5 class="card-title">Sedang diproses</h5>
-                                                </a>
-                                                <?php foreach ($proses->getResultObject() as $a) : ?>
-                                                    <?= $a->idPengaduan; ?>
-                                                <?php endforeach ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <a href="/Pengaduan_online/Selesai">
-                                                    <h5 class="card-title">Selesai diproses</h5>
-                                                </a>
-                                                <?php foreach ($selesai->getResultObject() as $a) : ?>
-                                                    <?= $a->idPengaduan; ?>
-                                                <?php endforeach ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
 
                                 <h4 class="card-title"><?= $title; ?></h4>
-                                <?php if (session()->getFlashdata('pesan')) : ?>
-                                    <div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan'); ?></div>
-                                <?php endif; ?>
 
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
