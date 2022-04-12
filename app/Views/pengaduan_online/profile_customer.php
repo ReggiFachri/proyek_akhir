@@ -58,13 +58,13 @@
                                         </div>
                                         <div class="col-11">
                                             <div class="my-2">
-                                                <input class="form-control" type="text" name="nama" required minlength="5" value="<?= $customer['Nama']; ?>">
+                                                <input class="form-control" type="text" name="nama" value="<?= $customer['Nama']; ?>">
                                             </div>
                                             <div class="my-2">
-                                                <input class="form-control" type="text" name="nik" disabled required minlength="5" value="<?= $customer['NIK']; ?>">
+                                                <input class="form-control" type="text" name="nik" disabled required minlength="16" value="<?= $customer['NIK']; ?>">
                                             </div>
                                             <div class="my-2">
-                                                <input class="form-control" type="email" name="email" required minlength="5" value="<?= $customer['Email']; ?>">
+                                                <input class="form-control" type="email" name="email" value="<?= $customer['Email']; ?>">
                                             </div>
                                             <div class="my-2">
                                                 <input class="form-control" type="text" name="pekerjaan" required minlength="5" value="<?= $customer['Pekerjaan']; ?>">

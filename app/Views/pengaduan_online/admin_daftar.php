@@ -45,7 +45,7 @@
                                             <th>Kategori</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th style="min-width: 25%;">Aksi</th>
                                         </tr>
                                     </thead>
 

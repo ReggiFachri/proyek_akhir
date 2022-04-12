@@ -41,7 +41,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <a href="/admin/Belum">
+                                                <a href="/admin/daftar/Belum">
                                                     <h5 class="card-title">Belum diproses</h5>
                                                 </a>
                                                 <?php foreach ($belum->getResultObject() as $a) : ?>
@@ -54,7 +54,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <a href="/admin/Sedang">
+                                                <a href="/admin/daftar/Sedang">
                                                     <h5 class="card-title">Sedang diproses</h5>
                                                 </a>
                                                 <?php foreach ($proses->getResultObject() as $a) : ?>
@@ -67,7 +67,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <a href="/admin/Selesai">
+                                                <a href="/admin/daftar/Selesai">
                                                     <h5 class="card-title">Selesai diproses</h5>
                                                 </a>
                                                 <?php foreach ($selesai->getResultObject() as $a) : ?>
@@ -93,14 +93,14 @@
                                     <div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan'); ?></div>
                                 <?php endif; ?>
 
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap  " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Judul</th>
                                             <th>Kategori</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th style="min-width: 25%;">Aksi</th>
                                         </tr>
                                     </thead>
 
