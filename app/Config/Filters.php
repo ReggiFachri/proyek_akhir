@@ -23,8 +23,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'authFilter' => \App\Filters\AuthFilter::class,
-        'authFilter_petugas' => \App\Filters\AuthFilterPetugas::class
+        'authFilter' => \App\Filters\AuthFilter::class
     ];
 
     /**
@@ -35,15 +34,13 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'authFilter' => ['except' => ['/', '/AuthCust/*', '/AuthPetugas/*', 'frontend/*', '/register_cust', '/pages/*', '/login_cust', '/register_petugas', '/login_petugas', '/admin', '/admin/*', '/Admin_pengaduan/*', '/lampiran/*']],
-            // 'authFilter_petugas' => ['except' => ['/', '/login_petugas', '/AuthPetugas/*', '/register_petugas']],
+            'authFilter' => ['except' => ['/', '/AuthCust/*', '/AuthPetugas/*', 'frontend/*', '/register_cust', '/pages/*', '/login_cust', '/register_petugas']],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
         ],
         'after' => [
-            'authFilter' => ['except' => ['/Pengaduan_online', '/Pengaduan_online/*']],
-            // 'authFilter_petugas' => ['except' => ['/backend', '/backend/*', '/dashboard_petugas', '/dashboard_petugas']],
+            'authFilter' => ['except' => ['Pengaduan_online', '/Pengaduan_online/*', 'admin', 'admin/*', '/Admin_pengaduan/*', '/lampiran/*']],
             'toolbar',
             // 'honeypot',
             // 'secureheaders',

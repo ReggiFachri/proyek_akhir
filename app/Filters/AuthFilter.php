@@ -11,16 +11,17 @@ class AuthFilter implements FilterInterface
   public function before(RequestInterface $request, $arguments = null)
   {
     $session = session();
-    if ($session->get('log_cust') != TRUE) {
+    if ($session->get('log') != TRUE) {
       return redirect()->to('/login_cust');
     }
   }
 
   public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
   {
-    $session = session();
-    if ($session->get('log_cust') == TRUE) {
-      return redirect()->to('/Pengaduan_online');
+    if (session('log') == TRUE && session('idLevel') == 5) {
+      return redirect()->to('Pengaduan_online');
+    } elseif (session('log') == TRUE && session('idLevel') != 5) {
+      return redirect()->to('admin');
     }
   }
 }

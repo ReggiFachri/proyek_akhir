@@ -41,7 +41,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <a href="/Pengaduan_online/Belum">
+                                                <a href="/Pengaduan_online/daftar/Belum">
                                                     <h5 class="card-title">Belum diproses</h5>
                                                 </a>
                                                 <?php foreach ($belum->getResultObject() as $a) : ?>
@@ -54,7 +54,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <a href="/Pengaduan_online/Sedang">
+                                                <a href="/Pengaduan_online/daftar/Sedang">
                                                     <h5 class="card-title">Sedang diproses</h5>
                                                 </a>
                                                 <?php foreach ($proses->getResultObject() as $a) : ?>
@@ -67,7 +67,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body text-center">
-                                                <a href="/Pengaduan_online/Selesai">
+                                                <a href="/Pengaduan_online/daftar/Selesai">
                                                     <h5 class="card-title">Selesai diproses</h5>
                                                 </a>
                                                 <?php foreach ($selesai->getResultObject() as $a) : ?>

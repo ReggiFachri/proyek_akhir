@@ -3,10 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\CustModel;
+use App\Models\UserModel;
 use App\Models\AuthModel;
 
 class AuthCust extends BaseController
 {
+  protected $CustModel;
+  protected $UserModel;
+
+  public function __construct()
+  {
+    $this->CustModel = new CustModel();
+    $this->UserModel = new UserModel();
+  }
   public function register()
   {
     $val = $this->validate(
@@ -32,16 +41,23 @@ class AuthCust extends BaseController
       return redirect()->to('/register_cust')->withInput()->with('validation', $validation);
     }
 
-    $data = [
-      'Nama' => $this->request->getPost('nama'),
-      'NIK' => $this->request->getPost('nik'),
-      'Email' => $this->request->getPost('email'),
-      'Pekerjaan' => $this->request->getPost('pekerjaan'),
-      'Password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+    $hashedPassword = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
 
-    ];
-    $model = new CustModel;
-    $model->insert($data);
+    $this->CustModel->save([
+      'Nama' => $this->request->getVar('nama'),
+      'NIK' => $this->request->getVar('nik'),
+      'Email' => $this->request->getVar('email'),
+      'Pekerjaan' => $this->request->getVar('pekerjaan'),
+      'Password' => $hashedPassword,
+      'idLevel' => '5'
+    ]);
+
+    $this->UserModel->save([
+      'Email' => $this->request->getVar('email'),
+      'Password' => $hashedPassword,
+      'idLevel' => '5'
+    ]);
+
     session()->setFlashdata('pesan_regis', 'Selamat Anda Berhasil Registrasi');
     return redirect()->to('/login_cust');
   }
@@ -49,9 +65,9 @@ class AuthCust extends BaseController
   public function login()
   {
     $model = new AuthModel;
-    $table = 'customer';
-    $email = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    $table = 'user';
+    $email = $this->request->getVar('email');
+    $password = $this->request->getVar('password');
     $row = $model->get_data_login($email, $table);
     if ($row == NULL) {
       session()->setFlashdata('pesan', 'Email anda tidak terdaftar');
@@ -60,17 +76,46 @@ class AuthCust extends BaseController
 
     if (password_verify($password, $row->Password)) {
       $data = [
-        'log_cust' => TRUE,
-        'nama' => $row->Nama,
-        'nik' => $row->NIK,
+        'log' => TRUE,
         'email' => $row->Email,
-        'pekerjaan' => $row->Pekerjaan,
-        'idCustomer' => $row->idCustomer
-
+        'idLevel' => $row->idLevel,
       ];
-      session()->set($data);
-      session()->setFlashdata('pesan', 'Berhasil Login');
-      return redirect()->to('/Pengaduan_online');
+
+      if ($data['idLevel'] == 5) {
+        $row_cust = $model->get_data_login($data['email'], 'customer');
+
+        $data = [
+          'log' => TRUE,
+          'idCustomer' => $row_cust->idCustomer,
+          'NIK' => $row_cust->NIK,
+          'Nama' => $row_cust->Nama,
+          'Email' => $row_cust->Email,
+          'Pekerjaan' => $row_cust->Pekerjaan,
+          'idLevel' => $row_cust->idLevel
+        ];
+
+        session()->set($data);
+        session()->setFlashdata('pesan', 'Berhasil Login');
+
+        return redirect()->to('Pengaduan_online');
+      } elseif ($data['idLevel'] != 5) {
+        $row_petugas = $model->get_data_login($data['email'], 'petugas_apt');
+
+        $data = [
+          'log' => TRUE,
+          'idPetugas' => $row_petugas->idPetugas,
+          'NIP' => $row_petugas->NIP,
+          'Nama' => $row_petugas->Nama,
+          'Email' => $row_petugas->Email,
+          'Unit' => $row_petugas->Unit,
+          'idLevel' => $row_petugas->idLevel
+        ];
+
+        session()->set($data);
+        session()->setFlashdata('pesan', 'Berhasil Login');
+
+        return redirect()->to('admin');
+      }
     } else {
       session()->setFlashdata('pesan', 'Password salah');
       return redirect()->to('/login_cust');

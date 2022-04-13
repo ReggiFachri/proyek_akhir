@@ -3,35 +3,73 @@
 namespace App\Controllers;
 
 use App\Models\PetugasModel;
+use App\Models\UserModel;
 use App\Models\AuthModel;
 
 
 class AuthPetugas extends BaseController
 {
+  protected $PetugasModel;
+  protected $UserModel;
+
+  public function __construct()
+  {
+    $this->PetugasModel = new PetugasModel();
+    $this->UserModel = new UserModel();
+  }
   public function register()
   {
-    $data = [
-      'Nama' => $this->request->getPost('nama'),
-      'NIP' => $this->request->getPost('nip'),
-      'Email' => $this->request->getPost('email'),
-      // 'kantor' => $this->request->getPost('kantor'),
-      'Unit' => $this->request->getPost('unit'),
-      'idLevel' => $this->request->getPost('level'),
-      'Password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+    $val = $this->validate(
+      [
+        'nip' => [
+          'rules' => 'is_unique[customer.nik]',
+          'errors' => [
+            'is_unique' => 'NIK sudah terdaftar',
+          ]
+        ],
+        'email' => [
+          'rules' => 'is_unique[customer.email]',
+          'errors' => [
+            'is_unique' => 'Email sudah terdaftar'
+          ]
+        ]
 
-    ];
-    $model = new PetugasModel;
-    $model->insert($data);
+      ]
+
+    );
+    if (!$val) {
+      $validation = \Config\Services::validation();
+      return redirect()->to('/register_cust')->withInput()->with('validation', $validation);
+    }
+
+    $hashedPassword = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
+
+    $this->PetugasModel->save([
+      'Nama' => $this->request->getVar('nama'),
+      'NIP' => $this->request->getVar('nip'),
+      'Email' => $this->request->getVar('email'),
+      // 'kantor' => $this->request->getVar('kantor'),
+      'Unit' => $this->request->getVar('unit'),
+      'idLevel' => $this->request->getVar('level'),
+      'Password' => $hashedPassword
+    ]);
+
+    $this->UserModel->save([
+      'Email' => $this->request->getVar('email'),
+      'Password' => $hashedPassword,
+      'idLevel' => $this->request->getVar('level')
+    ]);
+
     session()->setFlashdata('pesan', 'Selamat Anda Berhasil Registrasi');
-    return redirect()->to('/login_petugas');
+    return redirect()->to('/login_cust');
   }
 
   public function login()
   {
     $model = new AuthModel;
     $table = 'petugas_apt';
-    $email = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    $email = $this->request->getVar('email');
+    $password = $this->request->getVar('password');
     $row = $model->get_data_login2($email, $table);
     if ($row == NULL) {
       session()->setFlashdata('pesan', 'Email anda tidak terdaftar');

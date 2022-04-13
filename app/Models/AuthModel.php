@@ -13,12 +13,4 @@ class AuthModel extends Model
     $log = $builder->get()->getRow();
     return $log;
   }
-
-  function get_data_login2($email, $tbl)
-  {
-    $builder = $this->db->table($tbl);
-    $builder->where('Email', $email);
-    $log = $builder->get()->getRow();
-    return $log;
-  }
 }
