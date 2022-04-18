@@ -15,7 +15,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-        <?= $this->include('partials/menu') ?>
+        <?= $this->include('partials/menu_petugas') ?>
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->

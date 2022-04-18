@@ -66,7 +66,7 @@ class Pengaduan_onlineModel extends Model
 
     // Model pengaduan untuk admin
 
-    public function listPengaduanAdmin()
+    public function listPengaduanAdmin($level, $kategori)
     {
         /**
          * SELECT * FROM pengaduan_online
@@ -74,13 +74,15 @@ class Pengaduan_onlineModel extends Model
          */
         $builder = $this->db->table('pengaduan_online');
         $builder->notlike('Status', 'Dibatalkan');
-        // $builder->where('idKategori', 4);
-        // $builder->where('idLevel', '1');
+        // $builder->where('idLevel', $level);
+        if ($level != 1) {
+            $builder->where('idKategori', $kategori);
+        }
         $query = $builder->get();
         return $query;
     }
 
-    public function listPengaduanAdmin2($status)
+    public function listPengaduanAdmin2($status, $level, $kategori)
     {
         /**
          * SELECT * FROM pengaduan_online
@@ -89,13 +91,15 @@ class Pengaduan_onlineModel extends Model
         $builder = $this->db->table('pengaduan_online');
         $builder->like('Status', $status);
         $builder->notlike('Status', 'Dibatalkan');
-        // $builder->where('idKategori', 4);
         // $builder->where('idLevel', '1');
+        if ($level != 1) {
+            $builder->where('idKategori', $kategori);
+        }
         $query = $builder->get();
         return $query;
     }
 
-    public function jumlahPengaduanAdmin($status)
+    public function jumlahPengaduanAdmin($status, $level, $kategori)
     {
         /**
          * SELECT * FROM pengaduan_online
@@ -103,6 +107,9 @@ class Pengaduan_onlineModel extends Model
          */
         $builder = $this->db->table('pengaduan_online');
         $builder->like('Status', $status);
+        if ($level != 1) {
+            $builder->where('idKategori', $kategori);
+        }
         $builder->selectCount('idPengaduan');
         $query = $builder->get();
         return $query;

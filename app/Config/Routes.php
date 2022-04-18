@@ -84,6 +84,7 @@ $routes->get('/Pengaduan_online/rating/(:num)', 'pengaduan_online::rating/$1');
 
 // Admin
 $routes->get('/admin', 'Admin_pengaduan::index');
+$routes->get('/admin/profile', 'Admin_pengaduan::profile');
 $routes->get('/admin/daftar/(:any)', 'Admin_pengaduan::daftar/$1');
 $routes->get('/admin/tanggapan/(:num)', 'Admin_pengaduan::tanggapan/$1');
 // $routes->get('/admin/input', 'Admin_pengaduan::input');
